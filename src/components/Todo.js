@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
 import AddTodo from './AddTodo';
-import ListItem from './ListItem';
+
+import List from './List';
+import SearchTodo from './SearchTodo';
+import ListHeader from './ListHeader';
 
 class Todo extends Component {
   constructor(props) {
@@ -18,6 +21,13 @@ class Todo extends Component {
         text: '',
         key: ''
       },
+      searchInput: '',
+      filteredItem: [
+        { text: 'Learn JavaScript', key: '1' },
+        { text: 'Learn React', key: '2' },
+        { text: 'Play around in JSFiddle', key: '3' },
+        { text: 'Build something awesome', key: '4' }
+      ],
     }
   }
 
@@ -33,7 +43,6 @@ class Todo extends Component {
   addItem = (e) => {
     e.preventDefault();
     const newItem = this.state.currentItem;
-    // console.log(newItem);
     if (newItem.text !== "") {
       const newItems = [...this.state.items, newItem];
       this.setState({
@@ -46,20 +55,42 @@ class Todo extends Component {
     }
   }
 
+  deleteItem = (key) => {
+    const remainingItems = this.state.items.filter((item) => item.key !== key);
+    this.setState({
+      items: remainingItems,
+      filteredItem: remainingItems
+    });
+  }
+
+  searchHandler = (event) => {
+    this.setState({
+      searchInput: event.target.value
+    });
+    const res = this.state.items.filter(item => {
+      return item.text.toLocaleLowerCase().includes(this.state.searchInput);
+    });
+    this.setState({ filteredItem: res });
+  }
+
   render() {
+    const { searchInput, filteredItem, items } = this.state;
     return (
       <div>
-        <AddTodo
+        <ListHeader />
+        <SearchTodo
+          searchHandler={this.searchHandler}
+          searchInput={searchInput}
+        />
+        < AddTodo
           inputText={this.state.currentItem.text}
           handleChange={this.handleChange}
           addItem={this.addItem}
         />
-        {this.state.items.map((item) => {
-          return <ListItem
-            key={item.key}
-            itemText={item.text}
-          />
-        })}
+        <List
+          listItems={this.state.searchInput ? filteredItem : items}
+          deleteItem={this.deleteItem}
+        />
       </div>
     )
   }

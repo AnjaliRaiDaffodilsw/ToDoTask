@@ -1,4 +1,7 @@
-.App {
+.App{
   text-align: center;
+  background-color: #8561db;
+  min-height:700px;
+  width: 400px;
+  margin: 40px auto;
 }
-

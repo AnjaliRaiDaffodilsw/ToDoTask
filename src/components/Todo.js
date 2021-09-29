@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import AddTodo from './AddTodo';
-import ListItem from './ListItem';
+
+import List from './List';
 
 class Todo extends Component {
   constructor(props) {
@@ -33,7 +34,6 @@ class Todo extends Component {
   addItem = (e) => {
     e.preventDefault();
     const newItem = this.state.currentItem;
-    // console.log(newItem);
     if (newItem.text !== "") {
       const newItems = [...this.state.items, newItem];
       this.setState({
@@ -54,12 +54,10 @@ class Todo extends Component {
           handleChange={this.handleChange}
           addItem={this.addItem}
         />
-        {this.state.items.map((item) => {
-          return <ListItem
-            key={item.key}
-            itemText={item.text}
-          />
-        })}
+        <List
+          listItems={this.state.items}
+        />
+       
       </div>
     )
   }

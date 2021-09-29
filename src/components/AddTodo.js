@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../assets/styles/AddTodo.css';
+
 class AddTodo extends Component {
 
   render() {
@@ -16,7 +18,7 @@ class AddTodo extends Component {
             onChange={handleChange}
             placeholder="Enter Todo"
           />
-          <button type="submit">Add</button>
+          <button type="submit">Add Item</button>
         </form>
       </div>
     )

@@ -5,7 +5,7 @@ import '../assets/styles/SearchTodo.css';
 
 export class SearchTodo extends Component {
   render() {
-    const { searchHandler, searchInput } = this.props;
+    const { searchHandler, searchInput, placeholderValue } = this.props;
     return (
       <div>
         <input
@@ -13,7 +13,7 @@ export class SearchTodo extends Component {
           type="text"
           onChange={searchHandler}
           value={searchInput}
-          placeholder="Search Todo"
+          placeholder={placeholderValue}
         />
       </div>
     )
@@ -22,6 +22,7 @@ export class SearchTodo extends Component {
 SearchTodo.propTypes = {
   searchHandler: PropTypes.func,
   searchInput: PropTypes.string,
+  placeholderValue: PropTypes.string
 };
 
 export default SearchTodo

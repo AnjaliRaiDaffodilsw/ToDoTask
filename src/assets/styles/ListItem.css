@@ -1,33 +1,53 @@
 .list{
 	color: black;
-	width: 300px;
+	width: 319px;
 	margin: 20px auto;
 	height: 50px;
 	background-color: #fa8aef;
 	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
 }
 
-.list p{
+.non-editable-input{
 	padding: 10px;
-	position: relative;
 	transition: ease-in-out;
-	float: left;
+	background-color: transparent;
+	color: black;
+	font-size: 17px;
 }
 
-.list p input{
-	background-color: transparent;
+.input-field {
+	padding: 10px;
+	transition: ease-in-out;
+	background-color: #fa8aef;
 	border: 0;
 	color: black;
-	font-size: 18px;
+	font-size: 17px;
 }
 
-.list p input:focus{
-	outline: none;
-}
-
-.list p span{
-	position: absolute;
-	left: 265px;
+.list span{
+	margin-top: 13px;
 	cursor: pointer;
 	color: white;
+	margin-right: 3px;
+}
+
+.edit-button {
+	height: 31px;
+	margin-top: 9px;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+
+.save-button {
+	height: 31px;
+	margin: 9px 6px 0px -68px;
+	cursor: pointer;
+}
+
+.buttons-container {
+	margin-right: 6px;
+	display: flex;
 }

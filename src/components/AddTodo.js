@@ -6,7 +6,7 @@ import '../assets/styles/AddTodo.css';
 class AddTodo extends Component {
 
   render() {
-    const { inputText, handleChange, addItem } = this.props;
+    const { inputText, handleChange, addItem, placeholderValue } = this.props;
     return (
       <div>
         <form
@@ -17,7 +17,7 @@ class AddTodo extends Component {
             type="text"
             value={inputText}
             onChange={handleChange}
-            placeholder="Enter Todo"
+            placeholder={placeholderValue}
           />
           <button type="submit">+</button>
         </form>
@@ -28,6 +28,7 @@ class AddTodo extends Component {
 
 AddTodo.propTypes = {
   inputText: PropTypes.string,
+  placeholderValue: PropTypes.string,
   handleChange: PropTypes.func,
   addItem: PropTypes.func,
 };

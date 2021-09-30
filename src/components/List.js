@@ -15,6 +15,7 @@ class List extends Component {
             id={item.key}
             itemText={item.text}
             deleteItem={this.props.deleteItem}
+            updateItem={this.props.updateItem}
           />
         })}
       </div>
@@ -25,6 +26,7 @@ class List extends Component {
 List.propTypes = {
   listItems: PropTypes.array,
   deleteItem: PropTypes.func,
+  updateItem: PropTypes.func,
 };
 
 export default List;

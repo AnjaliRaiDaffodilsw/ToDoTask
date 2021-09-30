@@ -12,21 +12,21 @@ class Todo extends Component {
 
     this.state = {
       items: [
-        { text: 'Learn JavaScript', key: '1' },
-        { text: 'Learn React', key: '2' },
-        { text: 'Play around in JSFiddle', key: '3' },
-        { text: 'Build something awesome', key: '4' }
+        { text: 'Learn JavaScript', key: 1 },
+        { text: 'Learn React', key: 2 },
+        { text: 'Play around in JSFiddle', key: 3 },
+        { text: 'Build something awesome', key: 4 }
       ],
       currentItem: {
         text: '',
-        key: ''
+        key: null
       },
       searchInput: '',
       filteredItem: [
-        { text: 'Learn JavaScript', key: '1' },
-        { text: 'Learn React', key: '2' },
-        { text: 'Play around in JSFiddle', key: '3' },
-        { text: 'Build something awesome', key: '4' }
+        { text: 'Learn JavaScript', key: 1 },
+        { text: 'Learn React', key: 2 },
+        { text: 'Play around in JSFiddle', key: 3 },
+        { text: 'Build something awesome', key: 4 }
       ],
     }
   }
@@ -49,7 +49,7 @@ class Todo extends Component {
         items: newItems,
         currentItem: {
           text: '',
-          key: ''
+          key: null
         }
       })
     }
@@ -61,6 +61,21 @@ class Todo extends Component {
       items: remainingItems,
       filteredItem: remainingItems
     });
+  }
+
+  updateItem = (textValue, key) => {
+    const newList = [];
+    this.state.items.map((item) => {
+      if (key === item.key) {
+        newList.push({ text: textValue, key: key });
+      } else {
+        newList.push(item);
+      }
+    });
+    this.setState({
+      items: newList,
+      filteredItem: newList,
+    })
   }
 
   searchHandler = (event) => {
@@ -81,15 +96,18 @@ class Todo extends Component {
         <SearchTodo
           searchHandler={this.searchHandler}
           searchInput={searchInput}
+          placeholderValue={"Search Todo"}
         />
         < AddTodo
           inputText={this.state.currentItem.text}
           handleChange={this.handleChange}
           addItem={this.addItem}
+          placeholderValue={"Add Todo"}
         />
         <List
           listItems={this.state.searchInput ? filteredItem : items}
           deleteItem={this.deleteItem}
+          updateItem={this.updateItem}
         />
       </div>
     )

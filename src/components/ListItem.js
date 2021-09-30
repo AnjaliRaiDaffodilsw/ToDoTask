@@ -18,29 +18,43 @@ class ListItem extends Component {
     return (
       <div className="list">
         {
-          this.state.onSave ? <input
-            id={id}
-            type="text"
-            value={this.state.inputText}
-            onChange={(event) => {
-              this.setState({
-                inputText: event.target.value,
-              });
-            }}
-            className="input-field"
-          />
-            : <p className="non-editable-input">{itemText}</p>
+          this.state.onSave ?
+            <button className="editable-button">
+              <input
+                id={id}
+                type="text"
+                value={this.state.inputText}
+                onChange={(event) => {
+                  this.setState({
+                    inputText: event.target.value,
+                  });
+                }}
+                autoComplete="off"
+                className="input-field"
+              />
+            </button>
+            : <button
+              className="editable-button"
+              onClick={() => this.setState({
+                onSave: !this.state.onSave
+              })}>
+              <p className="non-editable-input">{itemText}</p>
+            </button>
         }
         <div className="buttons-container">
-          <button
-            className={`${this.state.onSave ? 'save-button' : 'edit-button'}`}
-            onClick={() => {
-              this.setState({
+          {
+            this.state.onSave
+            && 
+            <button
+              onClick={() => this.setState({
                 onSave: !this.state.onSave
               },
-                () => !this.state.onSave
-                  && this.props.updateItem(this.state.inputText, id))
-            }}>{this.state.onSave ? "Save" : "Edit"}</button>
+                () => this.props.updateItem(this.state.inputText, id))
+              }
+              className="save-button">
+              Save
+              </button>
+          }
           <span>
             <FontAwesomeIcon
               className="faicons"

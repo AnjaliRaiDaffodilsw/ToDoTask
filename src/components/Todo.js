@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import AddTodo from './AddTodo';
-
 import List from './List';
 import SearchTodo from './SearchTodo';
 import ListHeader from './ListHeader';
@@ -14,8 +13,8 @@ class Todo extends Component {
       items: [
         { text: 'Learn JavaScript', key: 1 },
         { text: 'Learn React', key: 2 },
-        { text: 'Play around in JSFiddle', key: 3 },
-        { text: 'Build something awesome', key: 4 }
+        { text: 'Play around in JS', key: 3 },
+        { text: 'Build something Great', key: 4 }
       ],
       currentItem: {
         text: '',
@@ -25,8 +24,8 @@ class Todo extends Component {
       filteredItem: [
         { text: 'Learn JavaScript', key: 1 },
         { text: 'Learn React', key: 2 },
-        { text: 'Play around in JSFiddle', key: 3 },
-        { text: 'Build something awesome', key: 4 }
+        { text: 'Play around in JS', key: 3 },
+        { text: 'Build something Great', key: 4 }
       ],
     }
   }
@@ -63,19 +62,16 @@ class Todo extends Component {
     });
   }
 
-  updateItem = (textValue, key) => {
-    const newList = [];
-    this.state.items.map((item) => {
-      if (key === item.key) {
-        newList.push({ text: textValue, key: key });
-      } else {
-        newList.push(item);
-      }
-    });
-    this.setState({
-      items: newList,
-      filteredItem: newList,
-    })
+  updateItem = (textValue, keys) => {
+    this.genericFunction((objKey) => objKey === keys, (obj) => Object.assign(obj, { text: textValue }), textValue, keys)
+  }
+
+  genericFunction = (comparableFunc, assigningFunc, textValue, keys) => {
+    this.setState(prevState => ({
+      items: prevState.items.map(
+        obj => (comparableFunc(obj.key, keys) ? assigningFunc(obj, textValue) : obj)
+      )
+    }));
   }
 
   searchHandler = (event) => {

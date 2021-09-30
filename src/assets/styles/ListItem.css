@@ -1,53 +1,61 @@
-.list{
-	color: black;
-	width: 319px;
-	margin: 20px auto;
-	height: 50px;
-	background-color: #fa8aef;
-	border-radius: 5px;
-	display: flex;
-	justify-content: space-between;
+.list {
+    color: black;
+    width: 319px;
+    margin: 20px auto;
+    height: 50px;
+    background-color: #fa8aef;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.non-editable-input{
-	padding: 10px;
-	transition: ease-in-out;
-	background-color: transparent;
-	color: black;
-	font-size: 17px;
+.non-editable-input {
+    padding: 10px;
+    transition: ease-in-out;
+    background-color: transparent;
+    color: black;
+    font-size: 17px;
 }
 
 .input-field {
-	padding: 10px;
-	transition: ease-in-out;
-	background-color: #fa8aef;
-	border: 0;
-	color: black;
-	font-size: 17px;
+    padding: 10px;
+    transition: ease-in-out;
+    background-color: #fa8aef;
+    border: 0;
+    color: black;
+    font-size: 17px;
 }
 
-.list span{
-	margin-top: 13px;
-	cursor: pointer;
-	color: white;
-	margin-right: 3px;
+.list span {
+    margin-top: 13px;
+    cursor: pointer;
+    color: white;
+    margin-right: 3px;
 }
 
-.edit-button {
-	height: 31px;
-	margin-top: 9px;
-	margin-right: 8px;
-	cursor: pointer;
+.non-editable-button {
+    background-color: #fa8aef;
+    border: none;
 }
-
 
 .save-button {
-	height: 31px;
-	margin: 9px 6px 0px -68px;
-	cursor: pointer;
+    height: 31px;
+    margin: 9px 11px 0px -68px;
+    cursor: pointer;
+    background-color: rgb(221, 182, 75);
+    border-radius: 8px;
 }
 
 .buttons-container {
-	margin-right: 6px;
-	display: flex;
+    margin-right: 6px;
+    display: flex;
+}
+
+.editable-button {
+    background-color: #fa8aef;
+    border: none;
+}
+
+.editable-button input:focus {
+    outline: none;
 }

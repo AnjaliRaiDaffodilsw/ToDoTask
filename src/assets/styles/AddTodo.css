@@ -1,26 +1,34 @@
-.to-do-form input{
-  border: 0; 
-  color: black;
-  width: 200px;
-  height: 50px;
-  margin: 20px;
-  padding: 0 20px;
-  font-size: 18px;
-  border-radius: 10px;
+.to-do-form input {
+    border: 0;
+    color: black;
+    width: 233px;
+    height: 50px;
+    margin: 19px 13px 0 15px;
+    padding: 0 20px;
+    font-size: 18px;
+    border-radius: 10px;
 }
 
-.to-do-form input:focus{
-  outline: none;
+.to-do-form {
+    width: 330px;
+    display: flex;
+    margin-left: 27px;
+    justify-content: space-between;
 }
 
-.to-do-form button{
-  height: 50px;
-  width: 80px;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
+.to-do-form input:focus {
+    outline: none;
 }
 
-.to-do-form button:focus{
-  outline: none;
+.to-do-form button {
+    height: 50px;
+    width: 80px;
+    border-radius: 5px;
+    margin-top: 19px;
+    border: 0;
+    cursor: pointer;
+}
+
+.to-do-form button:focus {
+    outline: none;
 }
